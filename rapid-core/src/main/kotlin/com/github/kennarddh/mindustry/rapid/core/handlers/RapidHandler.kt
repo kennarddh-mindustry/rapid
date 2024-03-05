@@ -16,8 +16,8 @@ import mindustry.type.Liquid
 import mindustry.type.LiquidStack
 import mindustry.world.Block
 import mindustry.world.blocks.power.NuclearReactor
-import mindustry.world.blocks.power.PowerGenerator.GeneratorBuild
-import mindustry.world.blocks.production.GenericCrafter.GenericCrafterBuild
+import mindustry.world.blocks.power.PowerGenerator
+import mindustry.world.blocks.production.GenericCrafter
 import mindustry.world.consumers.*
 import java.util.concurrent.ConcurrentHashMap
 
@@ -36,6 +36,8 @@ class RapidHandler : Handler {
         Liquids.nitrogen,
         Liquids.cyanogen
     )
+
+    private val filledBlockFilter: (Block) -> Boolean = { it is GenericCrafter || it is PowerGenerator }
 
     private val blockConsumersCaches = ConcurrentHashMap<Block, BlockConsumersCache>()
 
@@ -111,7 +113,7 @@ class RapidHandler : Handler {
     fun onBlockBuildEndEvent(event: EventType.BlockBuildEndEvent) {
         if (event.breaking) return
 
-        if (event.tile.build is GenericCrafterBuild || event.tile.build is GeneratorBuild) {
+        if (filledBlockFilter(event.tile.build.block)) {
             runOnMindustryThread {
                 updateBuilding(event.tile.build)
             }
@@ -122,9 +124,9 @@ class RapidHandler : Handler {
     @EventHandlerTrigger(EventType.Trigger.update)
     fun onUpdate() {
         runOnMindustryThread {
-            Groups.build.each { building ->
-                if (building is GenericCrafterBuild || building is GeneratorBuild) {
-                    updateBuilding(building)
+            Groups.build.each {
+                if (filledBlockFilter(it.block)) {
+                    updateBuilding(it)
                 }
             }
         }
