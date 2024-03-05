@@ -513,8 +513,6 @@ include:
   - name: JavadocLinkAsPlainText
   - name: MismatchedJavadocCode
   - name: MissingDeprecatedAnnotation
-  - name: MissingPackageInfo
-  - name: MissingJavadoc
   - name: UnnecessaryInheritDoc
   - name: UnnecessaryJavaDocLink
   - name: JsonSchemaCompliance
@@ -628,7 +626,6 @@ include:
   - name: ClassOnlyUsedInOnePackage
   - name: PackageInMultipleModules
   - name: DisjointPackage
-  - name: PackageWithTooFewClasses
   - name: PackageWithTooManyClasses
   - name: ExceptionPackage
   - name: ObjectEqualsCanBeEquality
