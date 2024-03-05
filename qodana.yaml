@@ -631,7 +631,6 @@ include:
   - name: ClassUnconnectedToPackage
   - name: ClassOnlyUsedInOnePackage
   - name: PackageInMultipleModules
-  - name: DisjointPackage
   - name: ExceptionPackage
   - name: ObjectEqualsCanBeEquality
   - name: IOStreamConstructor
