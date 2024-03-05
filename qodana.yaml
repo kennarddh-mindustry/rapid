@@ -1,6 +1,12 @@
 version: "1.0"
 linter: jetbrains/qodana-jvm-community:2023.3
 projectJDK: temurin-17
+exclude:
+  - name: Gradle
+    paths:
+      - ./gradlew
+      - ./gradlew.bat
+      - ./gradle/gradle-wrapper.properties
 include:
   - name: CheckDependencyLicenses
   - name: VulnerableLibrariesGlobal
@@ -626,7 +632,6 @@ include:
   - name: ClassOnlyUsedInOnePackage
   - name: PackageInMultipleModules
   - name: DisjointPackage
-  - name: PackageWithTooManyClasses
   - name: ExceptionPackage
   - name: ObjectEqualsCanBeEquality
   - name: IOStreamConstructor
