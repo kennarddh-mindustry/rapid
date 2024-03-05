@@ -55,8 +55,6 @@ abstract class AbstractVoteCommand<T : Any>(
         sessionMutex.withLock {
             if (canPlayerVote(initiator, session!!)) {
                 session!!.voted[initiator] = true
-
-                checkIsRequiredVoteReached()
             }
 
             val sessionDetail = getSessionDetails(session!!)
@@ -68,6 +66,8 @@ abstract class AbstractVoteCommand<T : Any>(
                 """.trimIndent() + if (sessionDetail != "") "\n${sessionDetail}" else ""
             )
         }
+
+        checkIsRequiredVoteReached()
 
         return true
     }
