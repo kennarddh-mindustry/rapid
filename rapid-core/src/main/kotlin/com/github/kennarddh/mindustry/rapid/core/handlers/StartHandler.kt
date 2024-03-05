@@ -6,8 +6,8 @@ import arc.util.Timer
 import com.github.kennarddh.mindustry.genesis.core.commons.runOnMindustryThread
 import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandler
 import com.github.kennarddh.mindustry.genesis.core.handlers.Handler
-import com.github.kennarddh.mindustry.rapid.core.commons.Logger
 import com.github.kennarddh.mindustry.rapid.core.commons.RapidVars
+import com.github.kennarddh.mindustry.rapid.core.commons.extensions.Logger
 import kotlinx.coroutines.delay
 import mindustry.Vars
 import mindustry.game.EventType

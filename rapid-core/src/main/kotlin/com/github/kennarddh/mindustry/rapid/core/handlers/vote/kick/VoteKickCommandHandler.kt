@@ -4,7 +4,7 @@ import com.github.kennarddh.mindustry.genesis.core.Genesis
 import com.github.kennarddh.mindustry.genesis.core.commands.annotations.ClientSide
 import com.github.kennarddh.mindustry.genesis.core.commands.annotations.Command
 import com.github.kennarddh.mindustry.genesis.standard.extensions.kickWithoutLogging
-import com.github.kennarddh.mindustry.rapid.core.commons.toDisplayString
+import com.github.kennarddh.mindustry.rapid.core.commons.extensions.toDisplayString
 import com.github.kennarddh.mindustry.rapid.core.handlers.vote.AbstractVoteCommand
 import com.github.kennarddh.mindustry.rapid.core.handlers.vote.VoteSession
 import mindustry.gen.Call

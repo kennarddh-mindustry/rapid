@@ -1,4 +1,4 @@
-package com.github.kennarddh.mindustry.rapid.core.commons
+package com.github.kennarddh.mindustry.rapid.core.commons.extensions
 
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds

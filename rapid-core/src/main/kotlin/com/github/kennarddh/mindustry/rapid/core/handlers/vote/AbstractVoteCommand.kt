@@ -4,7 +4,7 @@ import arc.util.Timer
 import com.github.kennarddh.mindustry.genesis.core.commons.CoroutineScopes
 import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandler
 import com.github.kennarddh.mindustry.genesis.core.handlers.Handler
-import com.github.kennarddh.mindustry.rapid.core.commons.toDisplayString
+import com.github.kennarddh.mindustry.rapid.core.commons.extensions.toDisplayString
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

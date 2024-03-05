@@ -2,7 +2,7 @@ package com.github.kennarddh.mindustry.rapid.core
 
 import com.github.kennarddh.mindustry.genesis.core.Genesis
 import com.github.kennarddh.mindustry.genesis.core.commons.AbstractPlugin
-import com.github.kennarddh.mindustry.rapid.core.commons.Logger
+import com.github.kennarddh.mindustry.rapid.core.commons.extensions.Logger
 import com.github.kennarddh.mindustry.rapid.core.handlers.RapidHandler
 import com.github.kennarddh.mindustry.rapid.core.handlers.ServerPresenceHandler
 import com.github.kennarddh.mindustry.rapid.core.handlers.StartHandler

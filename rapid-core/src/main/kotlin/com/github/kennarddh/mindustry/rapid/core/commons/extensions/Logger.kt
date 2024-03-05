@@ -1,4 +1,4 @@
-package com.github.kennarddh.mindustry.rapid.core.commons
+package com.github.kennarddh.mindustry.rapid.core.commons.extensions
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,4 +1,4 @@
-package com.github.kennarddh.mindustry.rapid.core.commons
+package com.github.kennarddh.mindustry.rapid.core.commons.extensions
 
 import arc.math.Mathf
 import mindustry.gen.Player
