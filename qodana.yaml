@@ -623,7 +623,6 @@ include:
   - name: InsertLiteralUnderscores
   - name: TypeCustomizer
   - name: GrMethodMayBeStatic
-  - name: KDocMissingDocumentation
   - name: PublicApiImplicitType
   - name: ClassUnconnectedToPackage
   - name: ClassOnlyUsedInOnePackage
