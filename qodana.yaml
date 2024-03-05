@@ -412,7 +412,6 @@ include:
   - name: IncorrectFormatting
   - name: InconsistentLineSeparators
   - name: InjectedReferences
-  - name: KotlinAnnotator
   - name: LongLine
   - name: ProblematicWhitespace
   - name: ReassignedToPlainText
