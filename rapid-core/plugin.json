@@ -1,0 +1,16 @@
+{
+    "name": "rapid-core",
+    "displayName": "RapidCore",
+    "author": "Kennarddh",
+    "description": "Plugin that makes everything has items.",
+    "minGameVersion": "146",
+    "java": true,
+    "main": "com.github.kennarddh.mindustry.rapid.core.Rapid",
+    "version": "0.0.0",
+    "repo": "kennarddh-mindustry/rapid",
+    "dependencies": [
+        "kotlin-runtime",
+        "genesis-core",
+        "genesis-standard"
+    ]
+}
