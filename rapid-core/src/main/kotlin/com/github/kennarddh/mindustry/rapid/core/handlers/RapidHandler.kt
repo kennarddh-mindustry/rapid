@@ -11,6 +11,7 @@ import mindustry.gen.Building
 import mindustry.gen.Groups
 import mindustry.type.Item
 import mindustry.type.Liquid
+import mindustry.world.blocks.power.NuclearReactor.NuclearReactorBuild
 import mindustry.world.blocks.power.PowerGenerator.GeneratorBuild
 import mindustry.world.blocks.production.GenericCrafter.GenericCrafterBuild
 import mindustry.world.consumers.*
@@ -68,7 +69,11 @@ class RapidHandler : Handler {
         }
 
         items.forEach {
-            building.items.set(it, building.block.itemCapacity)
+            if (building is NuclearReactorBuild) {
+                building.items.set(it, building.block.itemCapacity)
+            } else {
+                building.items.set(it, Int.MAX_VALUE)
+            }
         }
 
         liquids.forEach {
