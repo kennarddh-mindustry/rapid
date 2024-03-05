@@ -1,7 +1,64 @@
 version: "1.0"
 linter: jetbrains/qodana-jvm-community:2023.3
 projectJDK: temurin-17
-
 include:
   - name: CheckDependencyLicenses
   - name: VulnerableLibrariesGlobal
+  - name: ForbiddenInSuspectContextMethod
+  - name: AddConversionCallMigration
+  - name: ProhibitUseSiteTargetAnnotationsOnSuperTypesMigration
+  - name: InlineClassDeprecatedMigration
+  - name: FromClosedRangeMigration
+  - name: RedundantLabelMigration
+  - name: NonExhaustiveWhenStatementMigration
+  - name: CastDueToProgressionResolutionChangeMigration
+  - name: ProhibitRepeatedUseSiteTargetAnnotationsMigration
+  - name: WarningOnMainUnusedParameterMigration
+  - name: KotlinDeprecation
+  - name: OverrideDeprecatedMigration
+  - name: DeclaringClassMigration
+  - name: AmbiguousExpressionInWhenBranchMigration
+  - name: ProhibitJvmOverloadsOnConstructorsOfAnnotationClassesMigration
+  - name: MavenCoroutinesDeprecation
+  - name: KotlinLoggerInitializedWithForeignClass
+  - name: RedundantNotNullExtensionReceiverOfInline
+  - name: GradleKotlinxCoroutinesDeprecation
+  - name: ModuleWithTooFewClasses
+  - name: ModuleWithTooManyClasses
+  - name: ConstPropertyName
+  - name: ClassName
+  - name: InconsistentCommentForJavaParameter
+  - name: LocalVariableName
+  - name: ObjectPrivatePropertyName
+  - name: ObjectPropertyName
+  - name: PackageName
+  - name: PrivatePropertyName
+  - name: PropertyName
+  - name: TestFunctionName
+  - name: RedundantUnitExpression
+  - name: RemoveRedundantBackticks
+  - name: KotlinDoubleNegation
+  - name: KotlinRedundantDiagnosticSuppress
+  - name: KotlinRedundantOverride
+  - name: RedundantSetter
+  - name: RemoveRedundantQualifierName
+  - name: RedundantSemicolon
+  - name: ReplaceWithIgnoreCaseEquals
+  - name: KotlinUnusedImport
+  - name: FilterIsInstanceCallWithClassLiteralArgument
+  - name: UsePropertyAccessSyntax
+  - name: ReplaceIsEmptyWithIfEmpty
+  - name: ReplaceGetOrSet
+  - name: UseExpressionBody
+  - name: AddOperatorModifier
+  - name: ReplaceGuardClauseWithFunctionCall
+  - name: JavaCollectionsStaticMethod
+  - name: JavaMapForEach
+  - name: ReplaceJavaStaticMethodWithKotlinAnalog
+  - name: CanBeVal
+  - name: UnclearPrecedenceOfBinaryExpression
+  - name: ReplaceUntilWithRangeUntil
+  - name: SortModifiers
+  - name: SuspiciousAsDynamic
+  - name: TrailingComma
+  - name: AddVarianceModifier
