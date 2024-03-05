@@ -18,6 +18,7 @@ import mindustry.world.Block
 import mindustry.world.blocks.power.NuclearReactor
 import mindustry.world.blocks.power.PowerGenerator
 import mindustry.world.blocks.production.GenericCrafter
+import mindustry.world.blocks.production.Separator
 import mindustry.world.consumers.*
 import java.util.concurrent.ConcurrentHashMap
 
@@ -37,7 +38,8 @@ class RapidHandler : Handler {
         Liquids.cyanogen
     )
 
-    private val filledBlockFilter: (Block) -> Boolean = { it is GenericCrafter || it is PowerGenerator }
+    private val filledBlockFilter: (Block) -> Boolean =
+        { it is Separator || it is GenericCrafter || it is PowerGenerator }
 
     private val blockConsumersCaches = ConcurrentHashMap<Block, BlockConsumersCache>()
 
