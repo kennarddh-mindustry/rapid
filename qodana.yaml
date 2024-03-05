@@ -1,2 +1,7 @@
 version: "1.0"
 linter: jetbrains/qodana-jvm-community:2023.3
+projectJDK: temurin-17
+
+include:
+  - name: CheckDependencyLicenses
+  - name: VulnerableLibrariesGlobal
