@@ -2,8 +2,8 @@ package com.github.kennarddh.mindustry.rapid.core.handlers
 
 import com.github.kennarddh.mindustry.genesis.core.commons.runOnMindustryThread
 import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandler
+import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandlerTrigger
 import com.github.kennarddh.mindustry.genesis.core.handlers.Handler
-import com.github.kennarddh.mindustry.genesis.core.timers.annotations.TimerTask
 import mindustry.content.Items
 import mindustry.content.Liquids
 import mindustry.game.EventType
@@ -87,7 +87,8 @@ class RapidHandler : Handler {
         }
     }
 
-    @TimerTask(1f, 1f)
+    @EventHandler
+    @EventHandlerTrigger(EventType.Trigger.update)
     fun onUpdate() {
         runOnMindustryThread {
             Groups.build.each { building ->
