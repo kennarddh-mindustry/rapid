@@ -30,10 +30,12 @@ abstract class AbstractVoteCommand<T : Any>(
     }
 
     protected suspend fun start(initiator: Player, objective: T): Boolean {
-        if (session != null) {
-            initiator.sendMessage("[#ff0000]There is '$name' vote in progress.")
+        sessionMutex.withLock {
+            if (session != null) {
+                initiator.sendMessage("[#ff0000]There is '$name' vote in progress.")
 
-            return false
+                return false
+            }
         }
 
         if (!canPlayerStart(initiator, objective)) {
@@ -51,8 +53,11 @@ abstract class AbstractVoteCommand<T : Any>(
         session = VoteSession(initiator, objective, task)
 
         sessionMutex.withLock {
-            if (canPlayerVote(initiator, session!!))
+            if (canPlayerVote(initiator, session!!)) {
                 session!!.voted[initiator] = true
+
+                checkIsRequiredVoteReached()
+            }
 
             val sessionDetail = getSessionDetails(session!!)
 
