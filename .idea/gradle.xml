@@ -8,9 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/toast-common" />
-            <option value="$PROJECT_DIR$/toast-core" />
-            <option value="$PROJECT_DIR$/toast-discord" />
+            <option value="$PROJECT_DIR$/rapid-core" />
           </set>
         </option>
       </GradleProjectSettings>
