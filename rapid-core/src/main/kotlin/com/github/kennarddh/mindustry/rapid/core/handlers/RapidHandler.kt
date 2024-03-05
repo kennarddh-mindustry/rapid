@@ -72,7 +72,7 @@ class RapidHandler : Handler {
         }
 
         liquids.forEach {
-            building.liquids.set(it, building.block.liquidCapacity)
+            building.liquids.set(it, Float.MAX_VALUE)
         }
     }
 
