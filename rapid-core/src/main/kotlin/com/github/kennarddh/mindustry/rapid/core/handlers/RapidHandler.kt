@@ -4,17 +4,22 @@ import com.github.kennarddh.mindustry.genesis.core.commons.runOnMindustryThread
 import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandler
 import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandlerTrigger
 import com.github.kennarddh.mindustry.genesis.core.handlers.Handler
+import com.github.kennarddh.mindustry.rapid.core.commons.BlockConsumersCache
 import mindustry.content.Items
 import mindustry.content.Liquids
 import mindustry.game.EventType
 import mindustry.gen.Building
 import mindustry.gen.Groups
 import mindustry.type.Item
+import mindustry.type.ItemStack
 import mindustry.type.Liquid
-import mindustry.world.blocks.power.NuclearReactor.NuclearReactorBuild
+import mindustry.type.LiquidStack
+import mindustry.world.Block
+import mindustry.world.blocks.power.NuclearReactor
 import mindustry.world.blocks.power.PowerGenerator.GeneratorBuild
 import mindustry.world.blocks.production.GenericCrafter.GenericCrafterBuild
 import mindustry.world.consumers.*
+import java.util.concurrent.ConcurrentHashMap
 
 class RapidHandler : Handler {
     private val allItems = Items.serpuloItems.add(Items.erekirItems).toSet()
@@ -32,11 +37,13 @@ class RapidHandler : Handler {
         Liquids.cyanogen
     )
 
-    private fun updateBuilding(building: Building) {
+    private val blockConsumersCaches = ConcurrentHashMap<Block, BlockConsumersCache>()
+
+    private fun buildCache(block: Block): BlockConsumersCache {
         val items = mutableListOf<Item>()
         val liquids = mutableListOf<Liquid>()
 
-        building.block.consumers.forEach {
+        block.consumers.forEach {
             when (it) {
                 is ConsumeItems -> {
                     items.addAll(it.items.map { it.item })
@@ -68,16 +75,37 @@ class RapidHandler : Handler {
             }
         }
 
+        val itemsCache: MutableList<ItemStack> = mutableListOf()
+        val liquidsCache: MutableList<LiquidStack> = mutableListOf()
+
         items.forEach {
-            if (building is NuclearReactorBuild) {
-                building.items.set(it, building.block.itemCapacity)
+            if (block is NuclearReactor) {
+                itemsCache.add(ItemStack(it, block.itemCapacity))
             } else {
-                building.items.set(it, Int.MAX_VALUE)
+                itemsCache.add(ItemStack(it, Int.MAX_VALUE))
             }
         }
 
         liquids.forEach {
-            building.liquids.set(it, Float.MAX_VALUE)
+            liquidsCache.add(LiquidStack(it, Float.MAX_VALUE))
+        }
+
+        val cache = BlockConsumersCache(itemsCache, liquidsCache)
+
+        blockConsumersCaches[block] = cache
+
+        return cache
+    }
+
+    private fun updateBuilding(building: Building) {
+        val cachedConsumers = blockConsumersCaches.computeIfAbsent(building.block) { buildCache(building.block) }
+
+        cachedConsumers.items.forEach {
+            building.items.set(it.item, it.amount)
+        }
+
+        cachedConsumers.liquids.forEach {
+            building.liquids.set(it.liquid, it.amount)
         }
     }
 
