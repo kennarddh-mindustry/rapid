@@ -92,8 +92,6 @@ class RapidHandler : Handler {
 
         val cache = BlockConsumersCache(itemsCache, liquidsCache)
 
-        blockConsumersCaches[block] = cache
-
         return cache
     }
 
