@@ -7,6 +7,9 @@ exclude:
       - ./gradlew
       - ./gradlew.bat
       - ./gradle/gradle-wrapper.properties
+  - name: Qodana
+    paths:
+      - ./qodana.yaml
 include:
   - name: CheckDependencyLicenses
   - name: VulnerableLibrariesGlobal
