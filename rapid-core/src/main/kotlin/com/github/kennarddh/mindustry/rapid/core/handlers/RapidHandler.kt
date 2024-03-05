@@ -31,7 +31,7 @@ class RapidHandler : Handler {
         Liquids.cyanogen
     )
 
-    fun updateBuilding(building: Building) {
+    private fun updateBuilding(building: Building) {
         val items = mutableListOf<Item>()
         val liquids = mutableListOf<Liquid>()
 
@@ -68,11 +68,11 @@ class RapidHandler : Handler {
         }
 
         items.forEach {
-            building.items.set(it, Int.MAX_VALUE)
+            building.items.set(it, building.block.itemCapacity)
         }
 
         liquids.forEach {
-            building.liquids.set(it, Float.MAX_VALUE)
+            building.liquids.set(it, building.block.liquidCapacity)
         }
     }
 
