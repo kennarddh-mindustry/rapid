@@ -43,14 +43,14 @@ class RapidHandler : Handler {
         val items = mutableListOf<Item>()
         val liquids = mutableListOf<Liquid>()
 
-        block.consumers.forEach {
-            when (it) {
+        block.consumers.forEach { consumer ->
+            when (consumer) {
                 is ConsumeItems -> {
-                    items.addAll(it.items.map { it.item })
+                    items.addAll(consumer.items.map { it.item })
                 }
 
                 is ConsumeItemFilter -> {
-                    val validItems = allItems.filter { item -> it.filter.get(item) }
+                    val validItems = allItems.filter { item -> consumer.filter.get(item) }
 
                     validItems.forEach { item ->
                         items.add(item)
@@ -58,7 +58,7 @@ class RapidHandler : Handler {
                 }
 
                 is ConsumeLiquidFilter -> {
-                    val validLiquids = allLiquids.filter { liquid -> it.filter.get(liquid) }
+                    val validLiquids = allLiquids.filter { liquid -> consumer.filter.get(liquid) }
 
                     validLiquids.forEach { liquid ->
                         liquids.add(liquid)
@@ -66,11 +66,11 @@ class RapidHandler : Handler {
                 }
 
                 is ConsumeLiquid -> {
-                    liquids.add(it.liquid)
+                    liquids.add(consumer.liquid)
                 }
 
                 is ConsumeLiquids -> {
-                    liquids.addAll(it.liquids.map { it.liquid })
+                    liquids.addAll(consumer.liquids.map { it.liquid })
                 }
             }
         }
