@@ -9,7 +9,7 @@ import com.github.kennarddh.mindustry.rapid.core.handlers.StartHandler
 import com.github.kennarddh.mindustry.rapid.core.handlers.WelcomeHandler
 import com.github.kennarddh.mindustry.rapid.core.handlers.vote.kick.VoteKickCommandHandler
 import com.github.kennarddh.mindustry.rapid.core.handlers.vote.rtv.RTVCommandHandler
-import com.github.kennarddh.mindustry.rapid.core.handlers.vote.skip_wave.SkipWaveCommandHandler
+import com.github.kennarddh.mindustry.rapid.core.handlers.vote.skip.wave.SkipWaveCommandHandler
 
 @Suppress("unused")
 class Rapid : AbstractPlugin() {

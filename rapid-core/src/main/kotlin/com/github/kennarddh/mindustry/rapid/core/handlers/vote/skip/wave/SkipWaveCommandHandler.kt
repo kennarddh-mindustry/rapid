@@ -1,4 +1,4 @@
-package com.github.kennarddh.mindustry.rapid.core.handlers.vote.skip_wave
+package com.github.kennarddh.mindustry.rapid.core.handlers.vote.skip.wave
 
 import com.github.kennarddh.mindustry.genesis.core.commands.annotations.ClientSide
 import com.github.kennarddh.mindustry.genesis.core.commands.annotations.Command
