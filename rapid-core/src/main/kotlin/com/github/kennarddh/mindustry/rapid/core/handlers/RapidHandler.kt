@@ -17,8 +17,8 @@ import mindustry.world.blocks.production.GenericCrafter.GenericCrafterBuild
 import mindustry.world.consumers.*
 
 class RapidHandler : Handler {
-    val allItems = Items.serpuloItems.add(Items.erekirItems).toSet()
-    val allLiquids = setOf(
+    private val allItems = Items.serpuloItems.add(Items.erekirItems).toSet()
+    private val allLiquids = setOf(
         Liquids.water,
         Liquids.slag,
         Liquids.oil,
