@@ -1,10 +1,12 @@
 package com.github.kennarddh.mindustry.rapid.core.handlers
 
 import com.github.kennarddh.mindustry.genesis.core.commons.runOnMindustryThread
+import com.github.kennarddh.mindustry.genesis.core.events.annotations.EventHandler
 import com.github.kennarddh.mindustry.genesis.core.handlers.Handler
 import com.github.kennarddh.mindustry.genesis.core.timers.annotations.TimerTask
 import mindustry.content.Items
 import mindustry.content.Liquids
+import mindustry.game.EventType
 import mindustry.gen.Building
 import mindustry.gen.Groups
 import mindustry.type.Item
@@ -74,8 +76,17 @@ class RapidHandler : Handler {
         }
     }
 
-    //    @EventHandler
-//    @EventHandlerTrigger(Trigger.update)
+    @EventHandler
+    fun onBlockBuildEndEvent(event: EventType.BlockBuildEndEvent) {
+        if (event.breaking) return
+
+        if (event.tile.build is GenericCrafterBuild || event.tile.build is GeneratorBuild) {
+            runOnMindustryThread {
+                updateBuilding(event.tile.build)
+            }
+        }
+    }
+
     @TimerTask(1f, 1f)
     fun onUpdate() {
         runOnMindustryThread {
